@@ -9,15 +9,17 @@ There are a total of 6 [SecureRandom Algorithm available](https://docs.oracle.co
 ## Behaviour
 
 For each algorthm you choose, it asks the length (in bits) and the number of attempts. Then computes the [**Runs Test**](https://en.wikipedia.org/wiki/Wald%E2%80%93Wolfowitz_runs_test)
-with a short analisys on the frequence (average, variance, standard deviation) for each algorithm used, aggregating runs of the same length. You can visualize also the **longest runs generated**.
+with a simple analisys on the frequence (average, variance, standard deviation) for each algorithm used, aggregating runs of the same length. You can visualize the **longest runs generated**.
 
-You can compare the **execution time** for each algorithm you use. 
+**execution time** for each algorithm used is shown. 
 
-Also, it generate the bits stream, in 2 ways: 
-* **FullFill**, where the selected class is asked to generate in one step all the byte array.
-* **BitByBit**, with the methods nextBool() asking to generate a bit in a loop.
+Reference values are in [FIPS 140-1](https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=917970).
+
+Bit streams are generated in two ways:
+* **FullFill**, where the selected class is asked to generate in one call the entire byte array.
+* **BitByBit**, with the methods nextBool() asking to generate single bits in a loop.
 
 Seeds are never manually configured. 
 
 If (number of bits)*(number of attempts) < 50000 it asks also if you want to visualize the generated numbers as well as the monobit test (rate between zero and ones). 
-Limit of 50000 is casual, just to prevent overflow on stdout.
+Limit of 50000 is just to prevent overflow on stdout.
